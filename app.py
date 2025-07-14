@@ -1,12 +1,11 @@
 from flask import Flask, render_template, request
 import requests
 import os
-from dotenv import load_dotenv
 import joblib
 import numpy as np
 
 # Load environment variables
-TMDB_API_KEY = os.environ("58e0a31d2c3aad285afa543aea6e73bb")
+TMDB_API_KEY = os.environ["58e0a31d2c3aad285afa543aea6e73bb"]
 
 app = Flask(__name__)
 
