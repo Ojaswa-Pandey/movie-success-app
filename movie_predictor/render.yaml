@@ -1,9 +1,0 @@
-services:
-  - type: web
-    name: movie-success-app
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: python app.py
-    envVars:
-      - key: TMDB_API_KEY
-        value: 58e0a31d2c3aad285afa543aea6e73bb
