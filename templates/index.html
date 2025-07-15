@@ -1,55 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Movie Success Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #141E30, #243B55);
-            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            color: #fff;
         }
+
         .container {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            padding: 30px 40px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            border: 1px solid rgba(255, 255, 255, 0.18);
             width: 400px;
+            animation: fadeIn 1.2s ease-in-out;
         }
+
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
         h2 {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            font-size: 24px;
             color: #FFD700;
         }
+
         label {
+            margin-top: 15px;
             display: block;
-            margin: 10px 0 5px;
-        }
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: none;
-            margin-bottom: 15px;
+            font-weight: 500;
             font-size: 14px;
         }
-        button {
-            background-color: #FFD700;
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
+
+        input, select {
             width: 100%;
-            font-weight: bold;
-            font-size: 15px;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 14px;
+            outline: none;
         }
+
+        input::placeholder {
+            color: #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #FFD700;
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+
         button:hover {
-            background-color: #FFC300;
+            background-color: #ffc800;
+        }
+
+        select option {
+            color: #000;
         }
     </style>
 </head>
@@ -58,11 +95,11 @@
         <h2>🎬 Movie Success Predictor</h2>
         <form action="/predict" method="post">
             <label>Budget (in million $):</label>
-            <input type="number" name="budget" step="0.1" required>
+            <input type="number" name="budget" step="0.1" placeholder="e.g. 150" required>
 
             <label>Genre:</label>
             <select name="genre" required>
-                <option value="">--Select Genre--</option>
+                <option value="">-- Select Genre --</option>
                 <option value="Action">Action</option>
                 <option value="Comedy">Comedy</option>
                 <option value="Drama">Drama</option>
@@ -75,7 +112,7 @@
             <input type="text" name="cast_name" placeholder="e.g. Tom Cruise" required>
 
             <label>Runtime (in minutes):</label>
-            <input type="number" name="runtime" required>
+            <input type="number" name="runtime" placeholder="e.g. 120" required>
 
             <button type="submit">Predict Success</button>
         </form>
